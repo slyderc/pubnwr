@@ -1,0 +1,111 @@
+# Context for PubNWR Radio Automation Script
+
+## Overview
+This is a Python script for Now Wave Radio that monitors Myriad Playout JSON files, processes track information, and handles various integrations. The script manages artwork, social media publishing, and web integration for currently playing tracks.
+
+## Key Features
+- Monitors Myriad.json for track changes (with FTP-aware file handling)
+- Publishes to social media: Last.FM, Listenbrainz, Facebook
+- Records SoundExchange play data
+- Manages album artwork with fallback to default image
+- Generates web-ready playlist.json
+- Handles program transitions
+- Skips processing for station IDs and jingles
+
+## Special Handling
+- Uses FTP-aware file monitoring with stability checks
+- Falls back to default artwork when source art missing
+- Skips social posting for non-song content
+- Handles relative paths for default image (relative to script_home)
+
+## File Structure
+```
+pubnwr/
+├── config/          # Configuration files
+├── db/             # Database schema
+├── system/         # Systemd service file
+└── src/
+	├── handlers/   # Core processing handlers
+	├── models/     # Data models
+	├── services/   # Social media services
+	└── utils/      # Utility functions
+```
+
+## System Paths
+- Config: /etc/pubnwr_MYRIAD.ini
+- Database: /var/lib/pubnwr/pubnwr.db
+- Logs: /var/log/pubnwr/
+- Service: /etc/systemd/system/pubnwr.service
+
+## Config File Features
+- Configurable social media credentials
+- Disable specific services via disable_services = ["ServiceName"]
+- Skip lists for artists and titles
+- Default image configuration
+- Path configurations for artwork and JSON files
+
+## Current Customizations
+- Default image is relative to script_home
+- Bluesky integration is disabled
+- Handles non-song content (station IDs, jingles) differently
+- Uses unique filenames for artwork except default image
+
+## Areas for Future Improvement
+
+### Logging Enhancements
+- Implement structured logging with consistent formats
+- Add logging contexts for better tracking across operations
+- Improve error message clarity and actionability
+- Add log rotation configuration
+- Consider adding logging levels for different operation types (social media, file operations, etc.)
+
+### State Management
+- Move program state from memory to database
+- Track program transitions more robustly
+- Implement recovery mechanisms for interrupted operations
+- Add checkpoints for long-running operations
+- Consider using database transactions for related operations
+
+### Database Improvements
+- Add tables for program statistics and analytics
+- Implement proper database migrations system
+- Add listener count tracking over time
+- Better track relationships between programs and tracks
+- Add indexes for common queries
+- Implement periodic cleanup of old data
+
+### Maintainability
+- Add comprehensive unit tests
+- Implement integration tests for social media services
+- Add type hints throughout codebase
+- Improve documentation with examples
+- Add health check endpoints
+- Implement metrics collection
+- Add configuration validation
+- Consider using dependency injection
+- Add retry mechanisms for external service calls
+
+### Code Organization
+- Consider splitting large handler classes
+- Implement proper exception hierarchy
+- Add service layer between handlers and database
+- Consider using asyncio for file operations
+- Implement proper cleanup of temporary files
+- Add configuration versioning
+
+### Statistics and Analytics
+- Track program-specific statistics
+- Implement play count analytics
+- Add listener engagement metrics
+- Track social media post performance
+- Generate periodic reports
+- Add API endpoints for stats access
+
+### Monitoring
+- Add system health monitoring
+- Implement alert thresholds
+- Track external service availability
+- Monitor disk usage for artwork
+- Track database growth
+
+This information was captured from our conversations about restructuring and optimizing the PubNWR script in January 2025. The improvements section represents potential enhancements that could be made to improve the system's robustness, maintainability, and functionality.

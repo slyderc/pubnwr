@@ -1,0 +1,10 @@
+README.md
+setup.py
+config/pubnwr_MYRIAD.ini
+pubnwr.egg-info/PKG-INFO
+pubnwr.egg-info/SOURCES.txt
+pubnwr.egg-info/dependency_links.txt
+pubnwr.egg-info/entry_points.txt
+pubnwr.egg-info/requires.txt
+pubnwr.egg-info/top_level.txt
+tests/__init__.py

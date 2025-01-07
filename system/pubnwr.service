@@ -1,0 +1,30 @@
+[Unit]
+Description=Now Wave Radio Playout Publisher
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=pubnwr
+Group=pubnwr
+ExecStart=/opt/pubnwr/venv/bin/pubnwr /etc/pubnwr_MYRIAD.ini
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=/opt/pubnwr
+Restart=always
+RestartSec=1
+StandardOutput=append:/var/log/pubnwr/pubnwr.log
+StandardError=append:/var/log/pubnwr/pubnwr.error.log
+
+# Security settings
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
