@@ -41,6 +41,7 @@ pytest_cache/
 # OS files
 .DS_Store
 Thumbs.db
+* 2.*
 
 # Environment variable files
 .env
