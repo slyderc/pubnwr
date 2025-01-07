@@ -1,6 +1,58 @@
-venv/
+# Byte-compiled files
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Setuptools/distribute and build artifacts
+*.egg-info/
+*.egg
+*.wheel
+build/
+dist/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Test results
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variable files
 .env
-.git
+.env.*
+
+# Package manager files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Debug and profiler output
+debug.log
+
+# Git metadata
+.git/
+
